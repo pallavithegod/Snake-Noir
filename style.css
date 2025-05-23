@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#preloader {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: lime;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 1000;
+  animation: fadeOut 1s ease-in-out 3s forwards;
+}
+
+.loader-text {
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; transform: scale(0.8);
+    }
+    to { 
+        opacity: 1; transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.container{
+    background: radial-gradient(rgb(0, 0, 0),rgb(50, 68, 43));
+   
+    min-height: 100vh;
+    min-width: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+.board{
+    margin-top: 40px;
+    height: min(80vw, 80vh);
+    width: min(80vw, 80vh);
+    border: 4px solid white;
+     box-shadow: 0 0 10px 2px lime;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(20,1fr);
+    grid-template-rows: repeat(20,1fr);
+    /* background: radial-gradient(rgb(50, 68, 43), black); */
+    /* transition: background 0.3s ease; */
+    background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: calc(100% / 20) calc(100% / 20);
+    
+}
+
+.hide-grid {
+    background-image: none !important;
+}
+
+.board div {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.head{
+    background: url(/assets/snake-head.jpg);
+    transform: rotate(0deg) scale(1.9);
+    transition: transform 0.2s ease;
+    transform-origin: center;
+}
+
+.snake{
+    background-color: #a0c432;
+    border-right: 2px dotted rgb(0, 0, 0);
+    border-left: 2px dotted black;
+    transition: transform 0.1s ease;
+}
+
+.apple{
+    background: url(/assets/apple.jpg);
+    background-size: cover;
+    /* box-shadow: 0 0 10px 2px #ff0000; */
+    /* border-radius: 50%; */
+}
+
+.score-container{
+    margin: 20px;
+    /* padding: 20px; */
+    width: 90%;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    color: white;
+    position: absolute;
+    font-size: 1.6rem;
+    font-family: 'New Tegomin', serif;
+}
+
+#gameOverMsg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2f3a0d;
+    color: white;
+    padding: 20px 30px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border: 2px solid #bbe63d;
+    border-radius: 10px;
+    display: none;
+    font-family: 'New Tegomin', serif;
+}
+
+#gameOverMsg.show {
+    display: block;
+}
+
+@media (max-width: 1260px){
+    .board{
+        height: 70vh;
+        width:70vh;
+    }
+    .score-container{
+        font-size: 1.2rem;
+    }
+    #gameOverMsg{
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
+    #controls button{
+        font-size: 0.9rem;
+        padding: 5px 6px;
+        width: 100px;
+    }
+    #controls span{
+        font-size: 1.1rem;
+    }
+}
+@media(max-width: 810px){
+    .board{
+        height: 60vh;
+        width: 60vh;
+    }
+
+    .score-container{
+        font-size: 1rem;
+    }
+    #gameOverMsg{
+        padding: 10px 10px;
+        font-size: 1rem;
+    }
+    #controls button{
+        font-size: 0.9rem;
+        padding: 5px 6px;
+        width: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .board {
+        height: 50vh;
+        width: 50vh;
+    }
+    .score-container {
+        font-size: 0.8rem;
+        top: 10px;
+        right: 20px;
+        /* position: static; */
+    }
+    #gameOverMsg{
+        padding: 10px 10px;
+        font-size: 0.8rem;
+    }
+    #controls button{
+        font-size: 0.9rem;
+        padding: 5px 6px;
+        width: 100px;
+    }
+}
+
+#controls {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    margin: 30px;
+    margin-left: 60px;
+}
+
+#restart, #showGrid, #pauseBtn {
+    position: static;
+    margin: 0; 
+    width: 120px;
+}
+
+.speed{
+    /* position: absolute; */
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+    align-items: center;
+}
+
+.speed span{
+    color: white;
+    /* position: absolute; */
+    font-size: 1.6rem;
+    font-family: 'New Tegomin', serif;
+}
+
+#controls button {
+    background-color: #b2d135;
+    color: #1e1e1e;
+    font-weight: bold;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'New Tegomin', serif;
+    width: 120px;
+}
+
+#controls button:hover {
+    background-color: #b34f4a;
+}
+
+#controls button:active {
+    transform: scale(0.9);
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Noir</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-text">Welcome to<br><strong>Snake Noir</strong></div>
+    </div>
+
+    <div class="score-container">
+        <div id="scoreBoard">Score: 0</div>
+        <div id="highScore">High Score: 0</div> 
+    </div>
+
+    <div id="controls">
+        <button id = "restart" onclick="restartGame()">Restart</button>
+        <button id = "showGrid" onclick="toggleGrid()">Toggle Grid</button>
+        <button id="pauseBtn">Pause</button>
+        <div class="speed">
+            <span>Difficulty Selector: </span>
+            <button onclick="changeSpeed(4)">Easy</button>
+            <button onclick="changeSpeed(6)">Medium</button>
+            <button onclick="changeSpeed(8)">Hard</button>
+            
+        </div>
+        
+    </div>
+
+      
+    <div class="container">
+        <div class="board"></div>
+    </div>
+
+    <div id="gameOverMsg" class="hidden">
+        <p>You lost the game!</p>
+    </div>
+
+
+
+    <script src = "/script.js"></script>
+</body>
+</html>
