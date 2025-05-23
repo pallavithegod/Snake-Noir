@@ -15,7 +15,7 @@ A fun and visually enhanced clone of the classic Snake game — made with HTML, 
 
 ## 📸 Screenshots
 
-![Screenshot of gameplay](./assets/screenshot.png)
+![Screenshot of gameplay](./assets/Screenshot.png)
 ![Screenshot of gameplay](./assets/Screenshot%202025-05-23%20150751.png)
 
 ## 🛠️ Tech Stack
